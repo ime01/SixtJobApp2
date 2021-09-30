@@ -12,7 +12,6 @@ import javax.inject.Inject
 
 class GetCarsUseCase @Inject constructor (private val repository: CarsRepository) {
 
-//    trigger the api call now...
 
     operator fun invoke (): Flow<Resource<List<Car>>> = flow {
 

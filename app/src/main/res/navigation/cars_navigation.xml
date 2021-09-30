@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cars_navigation.xml"
+    app:startDestination="@id/carsListFragment">
+
+    <fragment
+        android:id="@+id/carsListFragment"
+        android:name="com.flowz.sixtjobapp2.ui.CarsListFragment"
+        android:label="Cars List"
+        tools:layout="@layout/fragment_cars_list" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.flowz.sixtjobapp2.ui.MapFragment"
+        android:label="Map View"
+        tools:layout="@layout/fragment_map" />
+</navigation>
