@@ -1,12 +1,20 @@
 package com.flowz.sixtjobapp2.ui
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout.VERTICAL
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.flowz.agromailjobtask.adapter.CarsAdapter
+import com.flowz.byteworksjobtask.util.showSnackbar
+import com.flowz.sixtjobapp.domain.model.Car
 import com.flowz.sixtjobapp2.R
 import com.flowz.sixtjobapp2.databinding.FragmentCarsListBinding
 import com.flowz.sixtjobapp2.presentation.cars_list.CarsApiStatus
@@ -19,9 +27,9 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
     private var _binding: FragmentCarsListBinding? = null
     private val binding get() = _binding!!
+    lateinit var carAdapter  : CarsAdapter
 
     private val viewModel: CarsViewModel by activityViewModels()
-
 
 
 
@@ -34,11 +42,29 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
         _binding = FragmentCarsListBinding.bind(view)
 
+        showWelcomeMarqueeText()
+
+        carAdapter = CarsAdapter{
+            transitionToDetailView(it)
+        }
+
         viewModel.getCars()
         observeState()
 
+    }
 
 
+    private fun showWelcomeMarqueeText() {
+
+        binding.apply {
+
+            welcomeTextMarquee.apply {
+                setSingleLine()
+                ellipsize = TextUtils.TruncateAt.MARQUEE
+                marqueeRepeatLimit = -1
+                isSelected = true
+            }
+        }
     }
 
 
@@ -52,19 +78,24 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
                     when (it) {
                         CarsApiStatus.ERROR -> {
 
-                            apiText.text = "ERROR OCCURED"
+                            errorImage.isVisible = true
+                            errorText.isVisible = true
+
+                                showSnackbar(welcomeTextMarquee, getString(R.string.error))
 
                         }
                         CarsApiStatus.LOADING -> {
 
-                            apiText.text = "API IS LOADING NOW"
+                            shimmerFrameLayout.startShimmer()
 
                         }
 
                         CarsApiStatus.DONE -> {
 
                             viewModel.carsFromNetwork.observe(viewLifecycleOwner, Observer {
-                                apiText.text = it.toString()
+
+                                    loadRecyclerView(it)
+
                             })
 
                         }
@@ -77,6 +108,31 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
     }
 
+    private fun transitionToDetailView(car: Car) {
+
+        showSnackbar(binding.errorImage," ${car.name}  Selected")
+
+//        val action = ImageListFragmentDirections.actionImageListFragmentToImageDetailFragment()
+//        action.hit = hit
+//        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+
+    private fun loadRecyclerView(cars: List<Car>) {
+
+        binding.apply {
+            errorImage.isVisible = false
+            carAdapter.submitList(cars)
+            rvList.layoutManager = LinearLayoutManager(requireContext())
+            rvList.adapter = carAdapter
+            val decoration = DividerItemDecoration(requireContext(), VERTICAL)
+            rvList.addItemDecoration(decoration)
+
+            shimmerFrameLayout.stopShimmer()
+            shimmerFrameLayout.visibility = View.GONE
+        }
+
+    }
 
 
 }

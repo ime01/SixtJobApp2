@@ -28,7 +28,7 @@ fun CarDto.toCar() : Car{
     return Car(
     carImageUrl = carImageUrl,
     color= color,
-    fuelType= fuelType,
+    fuelLevel= fuelLevel,
     group = group,
     id= id,
     innerCleanliness= innerCleanliness,

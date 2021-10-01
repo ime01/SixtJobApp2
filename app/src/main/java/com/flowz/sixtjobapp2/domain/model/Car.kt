@@ -3,7 +3,7 @@ package com.flowz.sixtjobapp.domain.model
 data class Car(
     val carImageUrl: String,
     val color: String,
-    val fuelType: String,
+    val fuelLevel: Double,
     val group: String,
     val id: String,
     val innerCleanliness: String,

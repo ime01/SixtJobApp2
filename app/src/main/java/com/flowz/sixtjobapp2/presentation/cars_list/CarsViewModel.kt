@@ -16,16 +16,10 @@ enum class  CarsApiStatus {LOADING, ERROR, DONE}
 class CarsViewModel @Inject constructor(private val getCarsUseCase: GetCarsUseCase) :ViewModel() {
 
 
-//    private val _state = mutableStateOf(CarsListState())
-//      val state: Lifecycle.State<CarsListState()> = _state
 
        val carsFromNetwork = MutableLiveData<List<Car>>()
        val requestCarsNetworkStatus = MutableLiveData<CarsApiStatus>()
 
-
-//    init {
-//        getCars()
-//    }
 
      fun getCars() {
 
@@ -38,7 +32,6 @@ class CarsViewModel @Inject constructor(private val getCarsUseCase: GetCarsUseCa
 
                     carsFromNetwork.postValue(result.data!!)
 
-//                    result.data?.forEach { carsFromNetwork.postValue(it) }
 
                 }
                 is Resource.Error ->{

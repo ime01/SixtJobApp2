@@ -2,4 +2,11 @@
     <string name="app_name">SixtJobApp2</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image">car Image</string>
+    <string name="name">Name</string>
+    <string name="tags">Make</string>
+    <string name="fuel_level">Fuel level</string>
+    <string name="welcome_text">Displaying a list of Cars from Api here https://cdn.sixt.io/codingtask/cars for my job assesment at Sixt, Hope to land it and join this Awesome Team in Germany Right Away!</string>
+    <string name="view_cars_on_map">View cars on the map</string>
+    <string name="error">Error fetching cars</string>
 </resources>
