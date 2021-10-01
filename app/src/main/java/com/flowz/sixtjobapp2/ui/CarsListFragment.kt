@@ -87,6 +87,7 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
                         CarsApiStatus.LOADING -> {
 
                             shimmerFrameLayout.startShimmer()
+                            shimmerFrameLayout.visibility = View.VISIBLE
 
                         }
 
