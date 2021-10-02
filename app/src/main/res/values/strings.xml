@@ -9,4 +9,5 @@
     <string name="welcome_text">Displaying a list of Cars from Api here https://cdn.sixt.io/codingtask/cars for my job assesment at Sixt, Hope to land it and join this Awesome Team in Germany Right Away!</string>
     <string name="view_cars_on_map">View cars on the map</string>
     <string name="error">Error fetching cars</string>
+    <string name="full_image">Large Car Image</string>
 </resources>

@@ -7,12 +7,48 @@
 
     <fragment
         android:id="@+id/carsListFragment"
-        android:name="com.flowz.sixtjobapp2.ui.CarsListFragment"
+        android:name="com.flowz.sixtjobapp2.ui.cars_list.CarsListFragment"
         android:label="Cars List"
-        tools:layout="@layout/fragment_cars_list" />
+        tools:layout="@layout/fragment_cars_list" >
+        <action
+            android:id="@+id/action_carsListFragment_to_carsDetailsFragment"
+            app:destination="@id/carsDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+        <argument
+            android:name="car"
+            app:argType="com.flowz.sixtjobapp.domain.model.Car"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_carsListFragment_to_mapFragment"
+            app:destination="@id/mapFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.flowz.sixtjobapp2.ui.MapFragment"
+        android:name="com.flowz.sixtjobapp2.ui.map.MapFragment"
         android:label="Map View"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/carsDetailsFragment"
+        android:name="com.flowz.sixtjobapp2.ui.car_details.CarsDetailsFragment"
+        android:label="Car Details"
+        tools:layout="@layout/fragment_cars_details">
+
+        <argument
+            android:name="car"
+            app:argType="com.flowz.sixtjobapp.domain.model.Car"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+    </fragment>
+
+
 </navigation>

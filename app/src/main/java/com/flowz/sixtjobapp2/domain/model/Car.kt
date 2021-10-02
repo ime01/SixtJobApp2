@@ -1,5 +1,10 @@
 package com.flowz.sixtjobapp.domain.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+
+@Parcelize
 data class Car(
     val carImageUrl: String,
     val color: String,
@@ -14,4 +19,4 @@ data class Car(
     val modelName: String,
     val name: String,
     val series: String,
-)
+): Parcelable

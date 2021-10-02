@@ -1,4 +1,4 @@
-package com.flowz.sixtjobapp2.presentation.cars_list
+package com.flowz.sixtjobapp2.presentation
 
 import com.flowz.sixtjobapp.domain.model.Car
 

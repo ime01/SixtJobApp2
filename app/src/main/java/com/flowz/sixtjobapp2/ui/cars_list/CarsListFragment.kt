@@ -1,15 +1,14 @@
-package com.flowz.sixtjobapp2.ui
+package com.flowz.sixtjobapp2.ui.cars_list
 
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flowz.agromailjobtask.adapter.CarsAdapter
@@ -18,7 +17,6 @@ import com.flowz.sixtjobapp.domain.model.Car
 import com.flowz.sixtjobapp2.R
 import com.flowz.sixtjobapp2.databinding.FragmentCarsListBinding
 import com.flowz.sixtjobapp2.presentation.cars_list.CarsApiStatus
-import com.flowz.sixtjobapp2.presentation.cars_list.CarsListState
 import com.flowz.sixtjobapp2.presentation.cars_list.CarsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -111,11 +109,9 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
     private fun transitionToDetailView(car: Car) {
 
-        showSnackbar(binding.errorImage," ${car.name}  Selected")
-
-//        val action = ImageListFragmentDirections.actionImageListFragmentToImageDetailFragment()
-//        action.hit = hit
-//        Navigation.findNavController(requireView()).navigate(action)
+        val action = CarsListFragmentDirections.actionCarsListFragmentToCarsDetailsFragment()
+        action.car = car
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
 
@@ -135,5 +131,9 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 
 }
