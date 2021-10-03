@@ -43,11 +43,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private var car: Car? = null
-    private var carbitmap: Bitmap? = null
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
     var cars = ArrayList<Car>()
-    var carIcons = ArrayList<Bitmap>()
     private val viewModel: CarsViewModel by activityViewModels()
 
 
@@ -78,45 +76,8 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-//        loadCarIcons("https://cdn.sixt.io/codingtask/images/mini.png")
-//        loadCarIcons("http://cdn.sixt.io/codingtask/images/mini.png")
-
-
-
-
-//        cars.forEach {
-//            loadCarIcons(it.carImageUrl)
-//            Log.e("LOAD", it.carImageUrl)
-//        }
-
-
     }
 
-
-    private fun loadCarIcons(url: String): Bitmap? {
-        Glide.with(requireContext())
-            .asBitmap()
-            .load(url)
-            .placeholder(R.drawable.bmw)
-            .error(R.drawable.bmw)
-            .fallback(R.drawable.bmw)
-            .into(object : CustomTarget<Bitmap>(50,50){
-                override fun onResourceReady(bitmap: Bitmap, transition: Transition<in Bitmap>?) {
-//                    imageView.setImageBitmap(resource)
-                    Log.e("IMAGE", bitmap.byteCount.toString())
-                    Log.e("IMAGE1", bitmap.toString())
-                    carIcons.add(bitmap)
-                    carbitmap = bitmap
-
-                }
-                override fun onLoadCleared(placeholder: Drawable?) {
-
-                }
-            })
-
-        return  carbitmap
-
-    }
 
     fun fetchListOfCarsLocations(){
 
@@ -167,12 +128,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
         cars.forEach {
 
-            loadCarIcons(it.carImageUrl)
-            Log.e("LOAD", it.carImageUrl)
-
-
             mMap.addMarker(MarkerOptions()
-//                .icon(BitmapDescriptorFactory.fromBitmap(carIcons.get(0)))
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.minibmw))
                 .position(LatLng(it.latitude, it.longitude)).title(" ${it.name}  driving a ${it.make}"))
 
