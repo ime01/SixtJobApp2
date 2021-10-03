@@ -14,7 +14,11 @@ ANDROID ARCHITECTURE COMPONENTS
 
 ANDROID JETPACK NAVIGATION
 
-CLEAN ARCHITECTURE WITH MVVM PATTERN AND SINGLE ACTIVITY
+TESTING
+
+CLEAN ARCHITECTURE WITH MVVM PATTERN 
+
+SINGLE ACTIVITY
 
 VIEWBINDING 
 
@@ -22,13 +26,13 @@ RETROFIT 2
 
 COROUTINES 
 
+MAPS API
+
 FLOW
 
 LIVEDATA
 
 FACEBOOK SHIMMER EFFECT
-
-MAPS API
 
 COIL
 
@@ -36,8 +40,15 @@ GLIDE
 
 
 
+![Screenshot_20211003-151041_SixtJobApp2](https://user-images.githubusercontent.com/44091450/135757726-95911d9b-4dd1-4a47-89bd-fcf72a17bf74.jpg)
 
 ![Screenshot_20211001-153959_SixtJobApp2](https://user-images.githubusercontent.com/44091450/135655092-be21b277-cc1b-4695-938d-9b1e9c5d2188.jpg)
+![Screenshot_20211003-151344_SixtJobApp2](https://user-images.githubusercontent.com/44091450/135757793-5ee4fd54-bb24-459f-87a4-7a713256c810.jpg)
+![Screenshot_20211003-151342_SixtJobApp2](https://user-images.githubusercontent.com/44091450/135757797-32acd916-7d88-4c08-bc61-a73de822177a.jpg)
+
+![Screenshot_20211003-151338_SixtJobApp2](https://user-images.githubusercontent.com/44091450/135757807-c65fa841-3341-4e09-a68b-823e74042c6b.jpg)
+
+
 ![Screenshot_20211001-153944_SixtJobApp2](https://user-images.githubusercontent.com/44091450/135655111-374a247c-12b2-4ace-a8f9-67c449761d62.jpg)
 ![Screenshot_20211001-153949_SixtJobApp2](https://user-images.githubusercontent.com/44091450/135655120-fb506631-cb2e-43a5-9612-34fe6e408f40.jpg)
 
