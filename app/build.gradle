@@ -96,6 +96,10 @@ dependencies {
     kapt "androidx.room:room-compiler:$version_room"
     implementation "androidx.room:room-ktx:$version_room"
 
+    //map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+
 //  Facebook shimmer effect
     implementation "com.facebook.shimmer:shimmer:0.5.0@aar"
 }

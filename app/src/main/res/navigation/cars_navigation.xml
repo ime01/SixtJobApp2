@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.flowz.sixtjobapp2.ui.map.MapFragment"
-        android:label="Map View"
+        android:label="Map View Of Cars"
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/carsDetailsFragment"

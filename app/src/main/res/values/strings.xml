@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SixtJobApp2</string>
+    <string name="map_key" translatable="false">AIzaSyA2JAmazOay4fV-wCWAZE8d2xjTy31BR-4</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="image">car Image</string>
@@ -10,4 +11,5 @@
     <string name="view_cars_on_map">View cars on the map</string>
     <string name="error">Error fetching cars</string>
     <string name="full_image">Large Car Image</string>
+    <string name="error_fetchng_cars_locations_to_display">Error Fetchng Cars Locations to Display</string>
 </resources>

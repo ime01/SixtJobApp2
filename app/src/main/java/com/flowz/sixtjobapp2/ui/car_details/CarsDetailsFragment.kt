@@ -34,15 +34,15 @@ class CarsDetailsFragment : Fragment(R.layout.fragment_cars_details) {
 
             car?.apply {
 
-              duserName.text = "Name:  ${name}"
-              dinnerCleanliness.text = "Inner Cleanliness:  ${innerCleanliness}"
-              dseries.text = "Series:  ${series}"
-              dmodelName.text = "Model Name:  ${modelName}"
-              dmake.text = "Make:  ${make}"
-              dlongitude.text = "Longitude:  ${longitude}"
-              dlatitude.text = "Latitude:  ${latitude}"
-              dgroup.text = "Group:  ${group}"
-              dfuelLevel.text = "Fuel Level:  ${fuelLevel}"
+              duserName.text = "Name :  ${name}"
+              dinnerCleanliness.text = "Inner Cleanliness :  ${innerCleanliness}"
+              dseries.text = "Series :  ${series}"
+              dmodelName.text = "Model Name :  ${modelName}"
+              dmake.text = "Make :  ${make}"
+              dlongitude.text = "Longitude :  ${longitude}"
+              dlatitude.text = "Latitude :  ${latitude}"
+              dgroup.text = "Group :  ${group}"
+              dfuelLevel.text = "Fuel Level :  ${fuelLevel}"
             }
 
 

@@ -30,7 +30,6 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
     private val viewModel: CarsViewModel by activityViewModels()
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -127,6 +126,10 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
             shimmerFrameLayout.stopShimmer()
             shimmerFrameLayout.visibility = View.GONE
+
+            openMapView.setOnClickListener {
+                Navigation.findNavController(requireView()).navigate(R.id.action_carsListFragment_to_mapFragment)
+            }
         }
 
     }
