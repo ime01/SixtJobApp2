@@ -29,7 +29,6 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
     private val viewModel: CarsViewModel by activityViewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -50,7 +49,6 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
     }
 
-
     private fun showWelcomeMarqueeText() {
 
         binding.apply {
@@ -63,7 +61,6 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
             }
         }
     }
-
 
     fun observeState(){
 
@@ -91,7 +88,6 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
                         CarsApiStatus.DONE -> {
 
                             viewModel.carsFromNetwork.observe(viewLifecycleOwner, Observer {
-
                                     loadRecyclerView(it)
 
                             })
