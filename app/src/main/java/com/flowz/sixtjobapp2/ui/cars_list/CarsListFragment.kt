@@ -16,8 +16,9 @@ import com.flowz.byteworksjobtask.util.showSnackbar
 import com.flowz.sixtjobapp.domain.model.Car
 import com.flowz.sixtjobapp2.R
 import com.flowz.sixtjobapp2.databinding.FragmentCarsListBinding
-import com.flowz.sixtjobapp2.presentation.cars_list.CarsApiStatus
 import com.flowz.sixtjobapp2.presentation.cars_list.CarsViewModel
+import com.plcoding.cryptocurrencyappyt.common.Resource
+import com.plcoding.cryptocurrencyappyt.common.Status
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +45,7 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
             transitionToDetailView(it)
         }
 
-        viewModel.getCars()
+        //viewModel.getCars()
         observeState()
 
     }
@@ -66,32 +67,28 @@ class CarsListFragment : Fragment(R.layout.fragment_cars_list) {
 
         binding.apply {
 
-            viewModel.requestCarsNetworkStatus.observe(viewLifecycleOwner, Observer { state ->
+            viewModel.carsFromNetwork.observe(viewLifecycleOwner, Observer { cars ->
 
-                state?.also {
-                    when (it) {
-                        CarsApiStatus.ERROR -> {
+                cars?.also {
+                    when (it.status) {
+                        Status.ERROR -> {
 
                             errorImage.isVisible = true
                             errorText.isVisible = true
 
-                                showSnackbar(welcomeTextMarquee, getString(R.string.error))
+                            showSnackbar(welcomeTextMarquee, it.message!!)
 
                         }
-                        CarsApiStatus.LOADING -> {
+                        Status.LOADING -> {
 
                             shimmerFrameLayout.startShimmer()
                             shimmerFrameLayout.visibility = View.VISIBLE
 
                         }
 
-                        CarsApiStatus.DONE -> {
+                        Status.SUCCESS -> {
 
-                            viewModel.carsFromNetwork.observe(viewLifecycleOwner, Observer {
-                                    loadRecyclerView(it)
-
-                            })
-
+                            loadRecyclerView(it.data!!)
                         }
 
                     }

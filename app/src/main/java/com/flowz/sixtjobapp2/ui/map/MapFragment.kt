@@ -23,7 +23,6 @@ import com.flowz.byteworksjobtask.util.showSnackbar
 import com.flowz.sixtjobapp.domain.model.Car
 import com.flowz.sixtjobapp2.R
 import com.flowz.sixtjobapp2.databinding.FragmentMapBinding
-import com.flowz.sixtjobapp2.presentation.cars_list.CarsApiStatus
 import com.flowz.sixtjobapp2.presentation.cars_list.CarsViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -32,6 +31,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.plcoding.cryptocurrencyappyt.common.Status
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -83,28 +83,28 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
         binding.apply {
 
-            viewModel.requestCarsNetworkStatus.observe(viewLifecycleOwner, Observer { state ->
+            viewModel.carsFromNetwork.observe(viewLifecycleOwner, Observer { state ->
 
                 state?.also {
-                    when (it) {
-                        CarsApiStatus.ERROR -> {
+                    when (it.status) {
+                        Status.ERROR -> {
 
                             mapsErrorText.isVisible = true
 
-                            showSnackbar(mapsErrorText, getString(R.string.error))
+                            showSnackbar(mapsErrorText, it.message!!)
 
                         }
-                        CarsApiStatus.LOADING -> {
+                        Status.LOADING -> {
 
                             mapsProgressBar.isVisible = true
 
                         }
 
-                        CarsApiStatus.DONE -> {
+                        Status.SUCCESS -> {
 
                             viewModel.carsFromNetwork.observe(viewLifecycleOwner, Observer {
 
-                              it.forEach {
+                              it.data?.forEach {
                                   cars.add(it)
                               }
 

@@ -1,10 +1,24 @@
 package com.plcoding.cryptocurrencyappyt.common
 
-sealed class Resource<T>(val data: T? = null, val message: String? = null) {
 
-    class Success<T>(data: T) : Resource<T>(data)
+data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
 
-    class Error<T>(message: String, data: T? = null) : Resource<T>(data, message)
+    companion object {
 
-    class Loading<T>(data: T? = null) : Resource<T>(data)
+        fun <T> success(data: T?): Resource<T> {
+            return Resource(Status.SUCCESS, data, null)
+        }
+
+        fun <T> error(msg: String): Resource<T> {
+            return Resource(Status.ERROR, null, msg)
+        }
+
+        fun <T> loading(): Resource<T> {
+            return Resource(Status.LOADING, null, null)
+        }
+
+    }
+
 }
+
+enum class  Status {LOADING, ERROR, SUCCESS}
