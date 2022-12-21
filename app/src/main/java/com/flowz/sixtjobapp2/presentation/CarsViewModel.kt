@@ -30,7 +30,7 @@ class CarsViewModel @Inject constructor(private val getCarsUseCase: GetCarsUseCa
 
      fun getCars() {
 
-      /*  getCarsUseCase().onEach { result->
+        getCarsUseCase().onEach { result->
 
             when(result.status){
 
@@ -40,22 +40,22 @@ class CarsViewModel @Inject constructor(private val getCarsUseCase: GetCarsUseCa
 
                 }
                  Status.ERROR ->{
-
-                    carsFromNetwork.value = Resource.error(result.message!!)
+                     val emptyCars = listOf<Car>()
+                    carsFromNetwork.value = Resource.error(emptyCars, result.message!!)
 
                 }
                  Status.LOADING ->{
-
-                    carsFromNetwork.value = Resource.loading()
+                     val emptyCars = listOf<Car>()
+                    carsFromNetwork.value = Resource.loading(emptyCars)
 
                 }
 
             }
         }.launchIn(viewModelScope)
-*/
 
 
-         viewModelScope.launch {
+
+       /*  viewModelScope.launch {
              getCarsUseCase.invoke()
                  .catch { e ->
                  carsFromNetwork.value = Resource.error(e.toString())
@@ -63,7 +63,7 @@ class CarsViewModel @Inject constructor(private val getCarsUseCase: GetCarsUseCa
                  .collect {
                      carsFromNetwork.value = Resource.success (it.data)
                  }
-         }
+         }*/
 
     }
 
