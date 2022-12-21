@@ -20,20 +20,18 @@ class GetCarsUseCase @Inject constructor (private val repository: CarsRepository
 
 
         try {
-            val emptyCars = listOf<Car>()
-            emit(Resource.loading(emptyCars))
+
+            emit(Resource.loading())
 
             val cars = repository.getCars().map { it.toCar() }
 
             emit(Resource.success(cars))
 
         }catch (e:HttpException){
-            val emptyCars = listOf<Car>()
-            emit(Resource.error(emptyCars, e.toString() ?: "An unexpected error occurred"))
+            emit(Resource.error( e.toString() ?: "An unexpected error occurred"))
 
         }catch (e: IOException){
-            val emptyCars = listOf<Car>()
-            emit(Resource.error(emptyCars,"Couldn't reach the server, Check your internet connection and try again"))
+            emit(Resource.error("Couldn't reach the server, Check your internet connection and try again"))
         }
 
 

@@ -40,13 +40,13 @@ class CarsViewModel @Inject constructor(private val getCarsUseCase: GetCarsUseCa
 
                 }
                  Status.ERROR ->{
-                     val emptyCars = listOf<Car>()
-                    carsFromNetwork.value = Resource.error(emptyCars, result.message!!)
+
+                    carsFromNetwork.value = Resource.error( result.message!!)
 
                 }
                  Status.LOADING ->{
-                     val emptyCars = listOf<Car>()
-                    carsFromNetwork.value = Resource.loading(emptyCars)
+
+                    carsFromNetwork.value = Resource.loading()
 
                 }
 

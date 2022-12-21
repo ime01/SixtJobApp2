@@ -9,11 +9,13 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
             return Resource(Status.SUCCESS, data, null)
         }
 
-        fun <T> error(data: T?, msg: String): Resource<T> {
+       // fun <T> error(msg: String): Resource<T> {
+        fun  error(msg: String): Resource<Nothing> {
             return Resource(Status.ERROR, null, msg)
         }
 
-        fun <T> loading(data: T?): Resource<T> {
+        //fun <T> loading(): Resource<T> {
+        fun  loading(): Resource<Nothing> {
             return Resource(Status.LOADING, null, null)
         }
 
